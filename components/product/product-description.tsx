@@ -1,8 +1,8 @@
-import { AddToCart } from 'components/cart/add-to-cart';
-import Price from 'components/price';
-import Prose from 'components/prose';
-import { Product } from 'lib/shopify/types';
-import { VariantSelector } from './variant-selector';
+import { AddToCart } from 'components/cart/add-to-cart'
+import Price from 'components/price'
+import Prose from 'components/prose'
+import { Product } from 'lib/shopify/types'
+import { VariantSelector } from './variant-selector'
 
 export function ProductDescription({ product }: { product: Product }) {
   return (
@@ -19,13 +19,10 @@ export function ProductDescription({ product }: { product: Product }) {
       <VariantSelector options={product.options} variants={product.variants} />
 
       {product.descriptionHtml ? (
-        <Prose
-          className="mb-6 text-sm leading-tight dark:text-white/[60%]"
-          html={product.descriptionHtml}
-        />
+        <Prose className="mb-6 text-sm leading-tight dark:text-white/[60%]" html={product.descriptionHtml} />
       ) : null}
 
       <AddToCart variants={product.variants} availableForSale={product.availableForSale} />
     </>
-  );
+  )
 }

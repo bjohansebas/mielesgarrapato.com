@@ -1,4 +1,4 @@
-import Grid from 'components/grid';
+import Grid from 'components/grid'
 
 export default function Loading() {
   return (
@@ -6,10 +6,9 @@ export default function Loading() {
       {Array(12)
         .fill(0)
         .map((_, index) => {
-          return (
-            <Grid.Item key={index} className="animate-pulse bg-neutral-100 dark:bg-neutral-900" />
-          );
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+          return <Grid.Item key={index} className="animate-pulse bg-neutral-100 dark:bg-neutral-900" />
         })}
     </Grid>
-  );
+  )
 }
