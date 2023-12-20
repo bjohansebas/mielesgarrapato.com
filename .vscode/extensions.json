@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        // Linting / Formatting
+        "biomejs.biome",
+        "dbaeumer.vscode-eslint",
+        "usernamehw.errorlens",
+        "bradlc.vscode-tailwindcss",
+    ]
+}
