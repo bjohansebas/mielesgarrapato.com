@@ -28,6 +28,21 @@ module.exports = {
         carousel: 'marquee 60s linear infinite',
         blink: 'blink 1.4s both infinite',
       },
+      colors: {
+        buttercup: {
+          50: '#fffce7',
+          100: '#fff8c1',
+          200: '#ffee86',
+          300: '#ffdc41',
+          400: '#ffc70d',
+          500: '#f5af00',
+          600: '#d18300',
+          700: '#a65c02',
+          800: '#89480a',
+          900: '#743b0f',
+          950: '#441d04',
+        },
+      },
     },
   },
   future: {
