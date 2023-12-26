@@ -1,9 +1,13 @@
-const plugin = require('tailwindcss/plugin')
+import containerQueries from '@tailwindcss/container-queries'
+import typography from '@tailwindcss/typography'
+import animate from 'tailwindcss-animate'
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
+
+const config: Config = {
   darkMode: ['class'],
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: ['./**/*.{ts,tsx}'],
   theme: {
     container: {
       center: true,
@@ -23,17 +27,17 @@ module.exports = {
       },
       keyframes: {
         fadeIn: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' },
         },
         blink: {
-          '0%': { opacity: 0.2 },
-          '20%': { opacity: 1 },
-          '100% ': { opacity: 0.2 },
+          '0%': { opacity: '0.2' },
+          '20%': { opacity: '1' },
+          '100% ': { opacity: '0.2' },
         },
         'accordion-down': {
           from: { height: '0' },
@@ -105,8 +109,9 @@ module.exports = {
     hoverOnlyWhenSupported: true,
   },
   plugins: [
-    require('@tailwindcss/container-queries'),
-    require('@tailwindcss/typography'),
+    animate,
+    containerQueries,
+    typography,
     plugin(({ matchUtilities, theme }) => {
       matchUtilities(
         {
@@ -121,6 +126,7 @@ module.exports = {
         },
       )
     }),
-    require('tailwindcss-animate'),
   ],
 }
+
+export default config
