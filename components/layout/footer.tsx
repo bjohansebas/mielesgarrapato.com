@@ -1,11 +1,10 @@
 import Link from 'next/link'
+import { Suspense } from 'react'
 
+import { SITE_NAME } from '@/lib/constants'
 import FooterMenu from 'components/layout/footer-menu'
 import LogoSquare from 'components/logo-square'
 import { getMenu } from 'lib/shopify'
-import { Suspense } from 'react'
-
-const { SITE_NAME } = process.env
 
 export default async function Footer() {
   const skeleton = 'w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700'
