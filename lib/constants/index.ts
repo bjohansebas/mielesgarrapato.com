@@ -1,3 +1,12 @@
+export const SITE_NAME = 'Mieles Organicas El Garrapato'
+
+export const HOME_DOMAIN =
+  process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+    ? 'https://garrapato.vercel.app'
+    : process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview'
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : 'http://localhost:3000'
+
 export type SortFilterItem = {
   title: string
   slug: string | null
