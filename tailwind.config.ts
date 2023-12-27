@@ -30,6 +30,10 @@ const config: Config = {
           from: { opacity: '0' },
           to: { opacity: '1' },
         },
+        'cart-moving': {
+          '0%': { transform: 'translateX(-0.5rem)' },
+          '100%': { transform: 'translateX(0.5rem)' },
+        },
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' },
@@ -51,6 +55,7 @@ const config: Config = {
       animation: {
         fadeIn: 'fadeIn .3s ease-in-out',
         carousel: 'marquee 60s linear infinite',
+        'cart-moving': 'cart-moving 1s linear infinite alternate',
         blink: 'blink 1.4s both infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
