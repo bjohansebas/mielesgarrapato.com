@@ -16,7 +16,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@ui/*": ["src/components/*"],
+      "@lib/*": ["src/lib/*"],
+      "@/*": ["src/*"]
     },
     "noUncheckedIndexedAccess": true,
     "plugins": [
