@@ -1,22 +1,37 @@
 'use client'
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { createUrl } from '@lib/utils'
+import { Form, FormControl, FormField, FormItem } from '@ui/ui/form'
+import { Input } from '@ui/ui/input'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+
+const searchSchema = z.object({
+  search: z.string(),
+})
 
 export default function Search() {
-  const router = useRouter()
   const searchParams = useSearchParams()
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+  const form = useForm<z.infer<typeof searchSchema>>({
+    resolver: zodResolver(searchSchema),
+    defaultValues: {
+      search: searchParams?.get('q') || '',
+    },
+  })
 
-    const val = e.target as HTMLFormElement
-    const search = val.search as HTMLInputElement
+  const router = useRouter()
+
+  function onSubmit(values: z.infer<typeof searchSchema>) {
+    const { search } = values
+
     const newParams = new URLSearchParams(searchParams.toString())
 
-    if (search.value) {
-      newParams.set('q', search.value)
+    if (search !== '') {
+      newParams.set('q', search)
     } else {
       newParams.delete('q')
     }
@@ -25,19 +40,30 @@ export default function Search() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
-      <input
-        key={searchParams?.get('q')}
-        type="text"
-        name="search"
-        placeholder="Search for products..."
-        autoComplete="off"
-        defaultValue={searchParams?.get('q') || ''}
-        className="w-full rounded-lg border bg-white px-4 py-2 text-sm text-black placeholder:text-neutral-500 dark:border-neutral-800 dark:bg-transparent dark:text-white dark:placeholder:text-neutral-400"
-      />
-      <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
-        <MagnifyingGlassIcon className="h-4" />
-      </div>
-    </form>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
+        <FormField
+          name="search"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <div>
+                  <Input
+                    type="search"
+                    placeholder="Search for products..."
+                    autoComplete="off"
+                    className="text-sm"
+                    {...field}
+                  />
+                  <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
+                    <MagnifyingGlassIcon className="h-4" />
+                  </div>
+                </div>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+      </form>
+    </Form>
   )
 }
