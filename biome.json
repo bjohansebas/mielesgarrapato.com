@@ -13,21 +13,7 @@
     "rules": {
       "recommended": true,
       "a11y": {
-        "noSvgWithoutTitle": "off",
-        "useButtonType": "off"
-      },
-      "suspicious": {
-        "noExplicitAny": "off",
-        "noArrayIndexKey": "off"
-      },
-      "performance": {
-        "noAccumulatingSpread": "off"
-      },
-      "style": {
-        "noNonNullAssertion": "off"
-      },
-      "complexity": {
-        "noForEach": "off"
+        "noSvgWithoutTitle": "off"
       },
       "correctness": {
         "useExhaustiveDependencies": "off"
