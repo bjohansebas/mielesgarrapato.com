@@ -9,14 +9,13 @@ export default function OpenCart({
   quantity?: number
 }) {
   return (
-    <div className="relative flex items-center justify-center">
-      <ShoppingCartIcon className={clsx('h-4 transition-all ease-in-out hover:scale-110 ', className)} />
-
+    <>
+      <ShoppingCartIcon className={clsx('h-6 transition-all ease-in-out hover:scale-110', className)} />
       {quantity ? (
-        <div className="absolute right-0 top-0 -mr-4 -mt-4 h-4 w-4 rounded bg-buttercup-700 text-[11px] font-medium text-white">
+        <div className="absolute right-0 top-[2px] h-4 w-4 rounded-full bg-buttercup-700 text-[11px] font-bold flex justify-center items-center text-white">
           {quantity}
         </div>
       ) : null}
-    </div>
+    </>
   )
 }

@@ -42,7 +42,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
     <>
       <Sheet>
         <SheetTrigger asChild>
-          <Button aria-label="Open cart" onClick={openCart} size="icon" variant="outline">
+          <Button aria-label="Open cart" onClick={openCart} size="icon" variant="link" className="relative">
             <OpenCart quantity={cart?.totalQuantity} />
           </Button>
         </SheetTrigger>
