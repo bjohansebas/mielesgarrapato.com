@@ -1,9 +1,12 @@
 'use client'
 
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
-import type { CartItem } from '@lib/shopify/types'
 import { updateItemQuantity } from '@ui/cart/actions'
 import LoadingDots from '@ui/loading-dots'
+import { Button } from '@ui/ui/button'
+
+import type { CartItem } from '@lib/shopify/types'
+
 import clsx from 'clsx'
 import { useFormState, useFormStatus } from 'react-dom'
 
@@ -11,7 +14,7 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
   const { pending } = useFormStatus()
 
   return (
-    <button
+    <Button
       type="submit"
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault()
@@ -19,21 +22,22 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
       aria-label={type === 'plus' ? 'Increase item quantity' : 'Reduce item quantity'}
       aria-disabled={pending}
       className={clsx(
-        'ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full px-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80',
+        'flex h-full min-w-[36px] max-w-[36px] items-center justify-center px-2 rounded-full text-muted-foreground',
         {
           'cursor-not-allowed': pending,
           'ml-auto': type === 'minus',
         },
       )}
+      variant="link"
     >
       {pending ? (
-        <LoadingDots className="bg-black dark:bg-white" />
+        <LoadingDots className="bg-white" />
       ) : type === 'plus' ? (
-        <PlusIcon className="h-4 w-4 dark:text-neutral-500" />
+        <PlusIcon className="h-4 w-4" />
       ) : (
-        <MinusIcon className="h-4 w-4 dark:text-neutral-500" />
+        <MinusIcon className="h-4 w-4" />
       )}
-    </button>
+    </Button>
   )
 }
 
