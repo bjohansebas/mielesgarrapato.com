@@ -10,7 +10,7 @@ import Navbar from '@ui/layout/navbar'
 
 export const viewport: Viewport = {
   themeColor: '#ffc310',
-  colorScheme: 'light',
+  colorScheme: 'dark',
 }
 
 export const metadata = constructMetadata()

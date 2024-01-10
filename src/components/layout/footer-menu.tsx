@@ -1,6 +1,7 @@
 'use client'
 
 import { Menu } from '@lib/shopify/types'
+
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -18,12 +19,9 @@ const FooterMenuItem = ({ item }: { item: Menu }) => {
     <li>
       <Link
         href={item.path}
-        className={clsx(
-          'block p-2 text-lg underline-offset-4 hover:text-black hover:underline dark:hover:text-neutral-300 md:inline-block md:text-sm',
-          {
-            'text-black dark:text-neutral-300': active,
-          },
-        )}
+        className={clsx('underline-offset-4 hover:underline hover:text-neutral-300 inline-block text-sm', {
+          'text-neutral-300': active,
+        })}
       >
         {item.title}
       </Link>
@@ -35,12 +33,10 @@ export default function FooterMenu({ menu }: { menu: Menu[] }) {
   if (!menu.length) return null
 
   return (
-    <nav>
-      <ul>
-        {menu.map((item: Menu) => {
-          return <FooterMenuItem key={item.title} item={item} />
-        })}
-      </ul>
-    </nav>
+    <ul className="mt-4 space-y-4">
+      {menu.map((item: Menu) => {
+        return <FooterMenuItem key={item.title} item={item} />
+      })}
+    </ul>
   )
 }
