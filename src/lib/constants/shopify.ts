@@ -1,0 +1,2 @@
+export const SHOPIFY_GRAPHQL_API_ENDPOINT = '/api/2023-01/graphql.json'
+export const SHOPIFY_STOREFRONT_ACCESS_TOKEN = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN as string
