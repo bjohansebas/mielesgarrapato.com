@@ -1,15 +1,17 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import Script from 'next/script'
 import { Suspense } from 'react'
 
 import { HIDDEN_PRODUCT_TAG } from '@lib/constants'
 import { getProduct, getProductRecommendations } from '@lib/shopify'
 import { Image } from '@lib/shopify/types'
+
 import { GridTileImage } from '@ui/grid/tile'
 import Footer from '@ui/layout/footer'
 import { Gallery } from '@ui/product/gallery'
 import { ProductDescription } from '@ui/product/product-description'
-import Link from 'next/link'
 
 export const runtime = 'edge'
 
@@ -73,15 +75,12 @@ export default async function ProductPage({ params }: { params: { handle: string
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productJsonLd),
-        }}
-      />
-      <div className="mx-auto max-w-screen-2xl px-4">
-        <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8">
-          <div className="h-full w-full basis-full lg:basis-4/6">
+      <Script type="application/ld+json" id="ld-product">
+        {JSON.stringify(productJsonLd)}
+      </Script>
+      <div className="mx-auto max-w-[1140px] px-8 pt-10">
+        <div className="flex flex-col p-12 lg:flex-row lg:gap-8 pb-5">
+          <div className="md:w-1/2 rounded-3xl h-full">
             <Gallery
               images={product.images.map((image: Image) => ({
                 src: image.url,
@@ -90,7 +89,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             />
           </div>
 
-          <div className="basis-full lg:basis-2/6">
+          <div className="md:w-1/2 h-full">
             <ProductDescription product={product} />
           </div>
         </div>
@@ -111,8 +110,8 @@ async function RelatedProducts({ id }: { id: string }) {
   if (!relatedProducts.length) return null
 
   return (
-    <div className="py-8">
-      <h2 className="mb-4 text-2xl font-bold">Related Products</h2>
+    <div className="pt-4 pb-8">
+      <h2 className="mb-4 text-2xl font-bold">Productos Relacionados</h2>
       <ul className="flex w-full gap-4 overflow-x-auto pt-1">
         {relatedProducts.map((product) => (
           <li
