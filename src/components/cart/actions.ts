@@ -2,12 +2,13 @@
 
 import { TAGS } from '@lib/constants'
 import { addToCart, createCart, getCart, removeFromCart, updateCart } from '@lib/shopify'
+import { Cart } from '@lib/shopify/types'
 import { revalidateTag } from 'next/cache'
 import { cookies } from 'next/headers'
 
 export async function addItem(prevState: any, selectedVariantId: string | undefined) {
   let cartId = cookies().get('cartId')?.value
-  let cart
+  let cart: Cart | undefined
 
   if (cartId) {
     cart = await getCart(cartId)

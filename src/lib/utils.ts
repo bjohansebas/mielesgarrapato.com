@@ -16,11 +16,11 @@ export const validateEnvironmentVariables = () => {
   const requiredEnvironmentVariables = ['SHOPIFY_STORE_DOMAIN', 'SHOPIFY_STOREFRONT_ACCESS_TOKEN']
   const missingEnvironmentVariables = [] as string[]
 
-  requiredEnvironmentVariables.forEach((envVar) => {
+  for (const envVar of requiredEnvironmentVariables) {
     if (!process.env[envVar]) {
       missingEnvironmentVariables.push(envVar)
     }
-  })
+  }
 
   if (missingEnvironmentVariables.length) {
     throw new Error(
