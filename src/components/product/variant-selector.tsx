@@ -41,8 +41,6 @@ export function VariantSelector({
     return combination
   })
 
-  console.log(combinations)
-
   return options.map((option) => (
     <dl className="mb-8" key={option.id}>
       <dt className="mb-4 uppercase tracking-wide">{option.name}</dt>

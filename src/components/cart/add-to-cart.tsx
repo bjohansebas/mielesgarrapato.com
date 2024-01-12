@@ -53,7 +53,7 @@ function SubmitButton({
         'cursor-not-allowed opacity-60': pending,
       })}
     >
-      {pending ? <LoadingDots className="mb-3 bg-white" /> : <PlusIcon className="h-5" />}
+      {pending ? <LoadingDots className="bg-white" /> : <PlusIcon className="h-5" />}
       Agregar al carrito
     </Button>
   )
