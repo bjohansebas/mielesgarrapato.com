@@ -7,14 +7,14 @@ import { Suspense } from 'react'
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
   return (
     <Suspense>
-      <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-black dark:text-white md:flex-row">
-        <div className="order-first w-full flex-none md:max-w-[125px]">
-          <Collections />
+      <div className="w-full flex bg-card">
+        <Collections />
+      </div>
+      <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-white md:flex-row pt-4 md:pt-8">
+        <div className="md:w-[230px]">
+          <FilterList list={sorting} title="Filtrar por:" />
         </div>
-        <div className="order-last min-h-screen w-full md:order-none">{children}</div>
-        <div className="order-none flex-none md:order-last md:w-[125px]">
-          <FilterList list={sorting} title="Sort by" />
-        </div>
+        <div className="min-h-screen w-full">{children}</div>
       </div>
       <Footer />
     </Suspense>

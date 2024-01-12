@@ -6,7 +6,6 @@ import { getMenu } from '@lib/shopify'
 import { Menu } from '@lib/shopify/types'
 import Cart from '@ui/cart'
 import OpenCart from '@ui/cart/open-cart'
-import LogoSquare from '@ui/logo-square'
 import MobileMenu from './mobile-menu'
 import Search from './search'
 
@@ -14,7 +13,7 @@ export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu')
 
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-6 bg-card">
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="block flex-none md:hidden">
         <MobileMenu menu={menu} />
       </div>

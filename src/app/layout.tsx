@@ -18,7 +18,7 @@ export const metadata = constructMetadata()
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es" className={GeistSans.variable}>
-      <body className="selection:bg-buttercup-400">
+      <body className="selection:bg-buttercup-400 bg-background text-foreground">
         <Navbar />
         <Suspense>
           <main>{children}</main>

@@ -1,32 +1,22 @@
-import { SortFilterItem } from '@lib/constants'
+import { SortFilterItemType } from '@lib/constants'
 import FilterItemDropdown from './dropdown'
-import { FilterItem } from './item'
+import { SortFilterItem } from './item'
 
-export type ListItem = SortFilterItem | PathFilterItem
-export type PathFilterItem = { title: string; path: string }
+export type ListItemType = SortFilterItemType
+export type PathFilterItemType = { title: string; path: string }
 
-function FilterItemList({ list }: { list: ListItem[] }) {
+export default function FilterList({ list, title }: { list: ListItemType[]; title?: string }) {
   return (
-    <>
-      {list.map((item: ListItem, i) => (
-        <FilterItem key={i} item={item} />
-      ))}
-    </>
-  )
-}
-
-export default function FilterList({ list, title }: { list: ListItem[]; title?: string }) {
-  return (
-    <>
-      <nav>
-        {title ? <h3 className="hidden text-xs text-neutral-500 dark:text-neutral-400 md:block">{title}</h3> : null}
-        <ul className="hidden md:block">
-          <FilterItemList list={list} />
-        </ul>
-        <ul className="md:hidden">
-          <FilterItemDropdown list={list} />
-        </ul>
-      </nav>
-    </>
+    <nav>
+      {title ? <h3 className="mb-3">{title}</h3> : null}
+      <ul className="hidden md:flex gap-2 flex-col text-sm">
+        {list.map((item: ListItemType) => (
+          <SortFilterItem key={item.title} item={item} />
+        ))}
+      </ul>
+      <ul className="md:hidden">
+        <FilterItemDropdown list={list} />
+      </ul>
+    </nav>
   )
 }

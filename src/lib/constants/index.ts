@@ -7,26 +7,26 @@ export const HOME_DOMAIN =
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
       : 'http://localhost:3000'
 
-export type SortFilterItem = {
+export type SortFilterItemType = {
   title: string
   slug: string | null
   sortKey: 'RELEVANCE' | 'BEST_SELLING' | 'CREATED_AT' | 'PRICE'
   reverse: boolean
 }
 
-export const defaultSort: SortFilterItem = {
-  title: 'Relevance',
+export const defaultSort: SortFilterItemType = {
+  title: 'Relevancia',
   slug: null,
   sortKey: 'RELEVANCE',
   reverse: false,
 }
 
-export const sorting: SortFilterItem[] = [
+export const sorting: SortFilterItemType[] = [
   defaultSort,
-  { title: 'Trending', slug: 'trending-desc', sortKey: 'BEST_SELLING', reverse: false }, // asc
-  { title: 'Latest arrivals', slug: 'latest-desc', sortKey: 'CREATED_AT', reverse: true },
-  { title: 'Price: Low to high', slug: 'price-asc', sortKey: 'PRICE', reverse: false }, // asc
-  { title: 'Price: High to low', slug: 'price-desc', sortKey: 'PRICE', reverse: true },
+  { title: 'Tendencia', slug: 'trending-desc', sortKey: 'BEST_SELLING', reverse: false }, // asc
+  { title: 'Últimas llegadas', slug: 'latest-desc', sortKey: 'CREATED_AT', reverse: true },
+  { title: 'Precio: De bajo a alto', slug: 'price-asc', sortKey: 'PRICE', reverse: false }, // asc
+  { title: 'Precio: De alto a bajo', slug: 'price-desc', sortKey: 'PRICE', reverse: true },
 ]
 
 export const TAGS = {

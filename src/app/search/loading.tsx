@@ -7,7 +7,7 @@ export default function Loading() {
         .fill(0)
         .map((_, index) => {
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          return <Grid.Item key={index} className="animate-pulse bg-neutral-100 dark:bg-neutral-900" />
+          return <Grid.Item key={index} className="animate-pulse bg-neutral-900" />
         })}
     </Grid>
   )
