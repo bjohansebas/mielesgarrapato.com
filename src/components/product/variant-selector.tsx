@@ -2,6 +2,7 @@
 
 import { ProductOption, ProductVariant } from '@lib/shopify/types'
 import { createUrl } from '@lib/utils'
+import { Button } from '@ui/ui/button'
 import clsx from 'clsx'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
@@ -27,19 +28,24 @@ export function VariantSelector({
     return null
   }
 
-  const combinations: Combination[] = variants.map((variant) => ({
-    id: variant.id,
-    availableForSale: variant.availableForSale,
-    // Adds key / value pairs for each variant (ie. "color": "Black" and "size": 'M").
-    ...variant.selectedOptions.reduce(
-      (accumulator, option) => ({ ...accumulator, [option.name.toLowerCase()]: option.value }),
-      {},
-    ),
-  }))
+  const combinations: Combination[] = variants.map((variant) => {
+    const combination: Combination = {
+      id: variant.id,
+      availableForSale: variant.availableForSale,
+    }
+
+    for (const option of variant.selectedOptions) {
+      combination[option.name.toLowerCase()] = option.value
+    }
+
+    return combination
+  })
+
+  console.log(combinations)
 
   return options.map((option) => (
     <dl className="mb-8" key={option.id}>
-      <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
+      <dt className="mb-4 uppercase tracking-wide">{option.name}</dt>
       <dd className="flex flex-wrap gap-3">
         {option.values.map((value) => {
           const optionNameLowerCase = option.name.toLowerCase()
@@ -72,27 +78,26 @@ export function VariantSelector({
           const isActive = searchParams.get(optionNameLowerCase) === value
 
           return (
-            <button
+            <Button
               key={value}
               aria-disabled={!isAvailableForSale}
               disabled={!isAvailableForSale}
               onClick={() => {
                 router.replace(optionUrl, { scroll: false })
               }}
-              title={`${option.name} ${value}${!isAvailableForSale ? ' (Out of Stock)' : ''}`}
-              className={clsx(
-                'flex min-w-[48px] items-center justify-center rounded-full border bg-neutral-100 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-neutral-900',
-                {
-                  'cursor-default ring-2 ring-blue-600': isActive,
-                  'ring-1 ring-transparent transition duration-300 ease-in-out hover:scale-110 hover:ring-blue-600 ':
-                    !isActive && isAvailableForSale,
-                  'relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700':
-                    !isAvailableForSale,
-                },
-              )}
+              title={`${option.name} ${value}${!isAvailableForSale ? ' (Agotado)' : ''}`}
+              className={clsx('rounded-full border text-sm', {
+                'cursor-default ring-2 ring-buttercup-600': isActive,
+                'ring-1 ring-transparent transition duration-300 ease-in-out hover:scale-110 hover:ring-buttercup-600':
+                  !isActive && isAvailableForSale,
+                'relative z-10 cursor-not-allowed overflow-hidden ring-1 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45  before:transition-transform bg-neutral-900 text-neutral-400 ring-neutral-700 before:bg-neutral-700':
+                  !isAvailableForSale,
+              })}
+              size="sm"
+              variant="outline"
             >
               {value}
-            </button>
+            </Button>
           )
         })}
       </dd>
