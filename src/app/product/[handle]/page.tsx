@@ -79,7 +79,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         {JSON.stringify(productJsonLd)}
       </Script>
       <div className="mx-auto max-w-[1140px] px-8 pt-10">
-        <div className="flex flex-col p-12 lg:flex-row lg:gap-8 pb-5">
+        <div className="flex flex-col px-2 md:px-12 p-12 lg:flex-row lg:gap-8 pb-5">
           <div className="md:w-1/2 rounded-3xl h-full">
             <Gallery
               images={product.images.map((image: Image) => ({
