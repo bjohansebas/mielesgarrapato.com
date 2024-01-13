@@ -20,7 +20,7 @@ export function ProductDescription({ product }: { product: Product }) {
 
       {product.descriptionHtml ? (
         <div className="mb-6 flex gap-4 flex-col w-full">
-          <h4 className="uppercase text-buttercup-500">Detalles</h4>
+          <h4 className="capitalize text-buttercup-500">Detalles</h4>
           <div>
             <Prose className="text-sm leading-tight" html={product.descriptionHtml} />
           </div>
