@@ -1,33 +1,10 @@
-import { Suspense } from 'react'
-
-import { getCollections } from '@lib/shopify'
-import { Skeleton } from '@ui/ui/skeleton'
+import { Collection } from '@lib/shopify/types'
 import FilterList from './list'
 
-async function CollectionList() {
-  const collections = await getCollections()
-  return <FilterList list={collections} />
-}
-
-export default function Collections() {
+export default async function Collections({ collections }: { collections: Collection[] }) {
   return (
-    <Suspense
-      fallback={
-        <div className="flex gap-3 w-full py-4">
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-5/6" />
-        </div>
-      }
-    >
-      <CollectionList />
-    </Suspense>
+    <div className="md:block hidden">
+      <FilterList list={collections} />
+    </div>
   )
 }

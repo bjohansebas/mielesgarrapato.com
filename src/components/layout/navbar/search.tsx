@@ -41,7 +41,7 @@ export default function Search() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-max-[400px] relative w-full lg:w-72 xl:w-full">
         <FormField
           name="search"
           render={({ field }) => (
@@ -50,9 +50,9 @@ export default function Search() {
                 <div>
                   <Input
                     type="search"
-                    placeholder="Search for products..."
+                    placeholder="Buscar productos..."
                     autoComplete="off"
-                    className="text-sm"
+                    className="text-sm border-buttercup-300/45"
                     {...field}
                   />
                   <div className="absolute right-0 top-0 mr-3 flex h-full items-center">

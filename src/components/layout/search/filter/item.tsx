@@ -25,7 +25,7 @@ export function SortFilterItem({ item }: { item: SortFilterItemType }) {
       <DynamicTag
         prefetch={!active ? false : undefined}
         href={href}
-        className={clsx('w-full h-full hover:underline hover:underline-offset-4 text-muted-foreground', {
+        className={clsx('w-full h-full hover:underline hover:underline-offset-4', {
           'underline underline-offset-4 text-card-foreground': active,
         })}
       >

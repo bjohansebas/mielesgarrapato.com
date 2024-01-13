@@ -14,8 +14,8 @@ export default async function Footer() {
   const menu_policies = await getMenu('next-js-frontend-footer-menu-policies')
 
   return (
-    <footer className="z-10  bg-card py-8 backdrop-blur-lg">
-      <div className="mx-auto w-full max-w-screen-xl px-2.5 lg:px-20 pt-16 border-t">
+    <footer className="z-10 py-8 backdrop-blur-lg bg-secondary/95">
+      <div className="mx-auto w-full max-w-screen-xl px-2.5 lg:px-20 pt-16 border-t-2 border-buttercup-600">
         <div className="xl:grid xl:grid-cols-5 xl:gap-8">
           <div className="space-y-8 xl:col-span-2">
             <Link className="flex items-center gap-2 text-white" href="/">
