@@ -49,12 +49,12 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
       <SheetContent className="backdrop-blur-lg bg-card/75">
         <div className="flex flex-col justify-between h-full">
           <SheetHeader className="h-fit">
-            <SheetTitle className="text-xl">Your Cart</SheetTitle>
+            <SheetTitle className="text-xl">Mi carrito</SheetTitle>
           </SheetHeader>
           {!cart || cart.lines.length === 0 ? (
             <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
               <ShoppingCartIcon className="h-10 animate-cart-moving" />
-              <p className="mt-6 text-center text-lg font-bold">Your cart is currently empty.</p>
+              <p className="mt-6 text-center text-lg font-bold">Tu carrito de compras está vacío.</p>
             </div>
           ) : (
             <div className="flex h-full flex-col justify-between overflow-hidden p-1">
@@ -128,7 +128,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     currencyCode={cart.cost.totalAmount.currencyCode}
                   />
                 </div>
-                <p className="text-center">Taxes & shipping calculated at checkout</p>
+                <p className="text-center">Impuestos y envío calculados al finalizar la compra.</p>
               </div>
             </div>
           )}
@@ -136,11 +136,11 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
             <SheetClose asChild>
               {!cart || cart.lines.length === 0 ? (
                 <Button type="submit" className="w-full uppercase font-bold">
-                  Continue shopping
+                  Continuar comprando
                 </Button>
               ) : (
                 <Button asChild className="p-3 w-full text-lg h-[27]">
-                  <a href={cart.checkoutUrl}>Proceed to Checkout</a>
+                  <a href={cart.checkoutUrl}>Ir a pagar</a>
                 </Button>
               )}
             </SheetClose>
