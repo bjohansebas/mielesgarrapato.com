@@ -1,13 +1,25 @@
+import { Metadata } from 'next'
+
 import { defaultSort, sorting } from '@lib/constants'
+import { constructMetadata } from '@lib/metadata'
 import { getProducts } from '@lib/shopify'
+
 import Grid from '@ui/grid'
 import ProductGridItems from '@ui/layout/product-grid-items'
 
 export const runtime = 'edge'
 
-export const metadata = {
-  title: 'Página de búsqueda',
-  description: 'Busca productos en la tienda.',
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { q: string }
+}): Promise<Metadata> {
+  return constructMetadata({
+    title: searchParams.q
+      ? `Resultados de la búsqueda "${searchParams.q}"`
+      : 'Página de búsqueda de Mieles El Garrapato',
+    description: 'Resultados de búsqueda en Mieles El Garrapato',
+  })
 }
 
 export default async function SearchPage({

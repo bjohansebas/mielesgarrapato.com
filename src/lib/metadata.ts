@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { HOME_DOMAIN } from './constants'
 
 export function constructMetadata({
-  title = 'Mieles Organicas El Garrapato',
+  title = 'Mieles El Garrapato',
   description = 'Miel 100% natural',
   //   image = '',
   icons = '/favicon.ico',
@@ -16,7 +16,7 @@ export function constructMetadata({
   return {
     title: {
       default: title,
-      template: `%s | ${title}`,
+      template: '%s · Mieles El Garrapato',
     },
     robots: {
       follow: true,
