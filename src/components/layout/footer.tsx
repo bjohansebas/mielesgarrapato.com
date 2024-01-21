@@ -2,10 +2,12 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 
 import { getMenu } from '@lib/shopify'
-import { InstagramLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
+import { InstagramLogoIcon } from '@radix-ui/react-icons'
 import FacebookLogoIcon from '@ui/icons/facebook'
 import LogoType from '@ui/icons/logotype'
+import YoutubeLogoIcon from '@ui/icons/youtube'
 import FooterMenu from '@ui/layout/footer-menu'
+import { Separator } from '@ui/ui/separator'
 import { Skeleton } from '@ui/ui/skeleton'
 
 export default async function Footer() {
@@ -22,17 +24,17 @@ export default async function Footer() {
             </Link>
             <div className="flex items-center space-x-2">
               <a
-                href="https://twitter.com"
+                href="https://www.youtube.com/@MielesElGarrapato"
                 target="_blank"
                 rel="noreferrer"
                 className="group rounded-md p-2 transition-colors hover:bg-background"
               >
-                <span className="sr-only">Twitter</span>
-                <TwitterLogoIcon className="h-5 w-5" />
+                <span className="sr-only">Youtube</span>
+                <YoutubeLogoIcon className="h-5 w-5" />
               </a>
-              <div className="h-8 border-l border-gray-200" />
+              <Separator orientation="vertical" className="h-5 bg-buttercup-500" />
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/mieleselgarrapato"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-md p-2 transition-colors hover:bg-background"
@@ -40,9 +42,9 @@ export default async function Footer() {
                 <span className="sr-only">Instagram</span>
                 <InstagramLogoIcon className="h-5 w-5" />
               </a>
-              <div className="h-8 border-l border-gray-200" />
+              <Separator orientation="vertical" className="h-5 bg-buttercup-500" />
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/mieleselgarrapato"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-md p-2 transition-colors hover:bg-background"
