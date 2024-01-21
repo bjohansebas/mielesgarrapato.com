@@ -10,6 +10,9 @@ module.exports = {
       },
     ],
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
   async redirects() {
     return [
       {
