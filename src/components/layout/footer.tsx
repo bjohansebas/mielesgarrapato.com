@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import { Suspense } from 'react'
 
-import { SITE_NAME } from '@lib/constants'
 import { getMenu } from '@lib/shopify'
 import { InstagramLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
 import FacebookLogoIcon from '@ui/icons/facebook'
+import LogoType from '@ui/icons/logotype'
 import FooterMenu from '@ui/layout/footer-menu'
-import LogoSquare from '@ui/logo-square'
 import { Skeleton } from '@ui/ui/skeleton'
 
 export default async function Footer() {
@@ -19,8 +18,7 @@ export default async function Footer() {
         <div className="xl:grid xl:grid-cols-5 xl:gap-8">
           <div className="space-y-8 xl:col-span-2">
             <Link className="flex items-center gap-2 text-white" href="/">
-              <LogoSquare size="sm" />
-              <span className="uppercase">{SITE_NAME}</span>
+              <LogoType className="h-12 w-auto" />
             </Link>
             <div className="flex items-center space-x-2">
               <a
