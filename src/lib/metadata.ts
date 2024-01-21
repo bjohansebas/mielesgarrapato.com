@@ -42,7 +42,7 @@ export function constructMetadata({
     },
     icons,
     metadataBase: new URL(HOME_DOMAIN),
-    manifest: '/manifest.json',
+    manifest: '/manifest.webmanifest',
     keywords: [],
   }
 }
